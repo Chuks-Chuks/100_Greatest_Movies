@@ -14,8 +14,7 @@ soup = BeautifulSoup(movies_web_page, 'html.parser')
 movies_100 = soup.find_all(name="h3", class_="title")
 movies_titles_numbers = [movie.getText() for movie in movies_100]
 
-re_arranged_list = [movies_titles_numbers[movie * - 1] for movie in range(1, len(movies_titles_numbers))]
-re_arranged_list.append(movies_titles_numbers[0])
+re_arranged_list = movies_titles_numbers[::-1]
 print(re_arranged_list)
 with open("Greatest Movies of All Time.txt", "a", encoding="utf-8") as GOAT_movies:
     for message in re_arranged_list:
